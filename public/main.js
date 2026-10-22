@@ -28,6 +28,12 @@ if (container) {
     var img = document.createElement('img');
     img.src = images[i];
     img.alt = '项目详情图';
+    img.decoding = 'async';
+    if (i === 0) {
+      img.fetchPriority = 'high';
+    } else {
+      img.loading = 'lazy';
+    }
     img.style.cssText = 'display:block;width:100%;height:auto;';
     container.appendChild(img);
   }
