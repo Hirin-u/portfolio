@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Xilin-UX design</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preload" as="image" href="hero-avatar.jpg" fetchpriority="high">
 </head>
 <body>
   <!-- 顶部导航 -->
@@ -25,12 +26,12 @@
     <div class="hero-frame">
       <div class="hero-inner">
         <div class="hero-avatar">
-          <img src="hero-avatar.jpg" alt="熙林">
+          <img src="hero-avatar.jpg" alt="熙林" width="1376" height="1364" fetchpriority="high" decoding="async">
         </div>
         <div class="hero-content">
           <div class="hero-hi-wrap">
             <p class="hero-hi">Hi~</p>
-            <img class="hero-hi-line" src="hero-underline.png" alt="">
+            <img class="hero-hi-line" src="hero-underline.png" alt="" width="1279" height="205" decoding="async">
           </div>
           <h1>我是 <span class="highlight">熙林</span></h1>
           <p class="hero-subtitle">热衷于探索新鲜领域，并尝试用设计创造新的可能性</p>
@@ -47,7 +48,7 @@
       <!-- 项目1 - 跳转到二级页 -->
       <a href="project.html?id=1" class="project-card">
         <div class="project-image">
-          <img src="project1-cover.jpg" alt="项目1">
+          <img src="project1-cover.jpg" alt="项目1" width="9816" height="4772" loading="lazy" decoding="async">
         </div>
         <div class="project-info">
           <h3>商家端新手村&体验中心设计</h3>
@@ -62,7 +63,7 @@
       <!-- 项目2 -->
       <a href="project.html?id=2" class="project-card">
         <div class="project-image">
-          <img src="project2-cover.jpg" alt="项目2">
+          <img src="project2-cover.jpg" alt="项目2" width="9816" height="4772" loading="lazy" decoding="async">
         </div>
         <div class="project-info">
           <h3>TTLS商家入驻自然渠道增长</h3>
@@ -103,7 +104,7 @@
       <p>邮箱：1504319994@qq.com</p>
       <p>电话：+86 18956019370</p>
       <div class="contact-wechat">
-        <img src="wechat-qr.jpg" alt="WeChat 二维码" class="wechat-qr">
+        <img src="wechat-qr.jpg" alt="WeChat 二维码" class="wechat-qr" width="540" height="540" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
