@@ -12,6 +12,34 @@ document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
   });
 });
 
+// 懒加载：图片进入视口后才真正下载，避免首屏预取大图
+function setupLazyImages() {
+  var lazyImages = document.querySelectorAll('img[data-src]');
+  if (!lazyImages.length) return;
+
+  function load(img) {
+    img.src = img.getAttribute('data-src');
+    img.removeAttribute('data-src');
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    lazyImages.forEach(load);
+    return;
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      load(entry.target);
+      observer.unobserve(entry.target);
+    });
+  });
+
+  lazyImages.forEach(function(image) {
+    observer.observe(image);
+  });
+}
+
 // 二级页：根据 URL 参数加载对应的项目大图
 var container = document.getElementById('project-images');
 if (container) {
@@ -48,12 +76,16 @@ if (container) {
     img.decoding = 'async';
     if (i === 0) {
       // 首图就是首屏内容，优先下载
+      img.src = images[i][0];
       img.fetchPriority = 'high';
     } else {
-      // 其余长图等滚动到附近再下载，避免一次性拉取全部原图
-      img.loading = 'lazy';
+      // 其余长图等真正滚动到该图再下载
+      img.setAttribute('data-src', images[i][0]);
     }
     img.style.cssText = 'display:block;width:100%;height:auto;';
     container.appendChild(img);
   }
+  setupLazyImages();
 }
+
+setupLazyImages();
